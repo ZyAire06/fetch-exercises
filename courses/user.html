@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Info</title>
+</head>
+<body>
+    <h1>Users Infomations</h1>
+    <div>
+        <table id="usersTb">
+
+        </table>
+    </div>
+    <script>
+        let table = document.getElementById('usersTb');
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(info =>{
+                console.log(info)
+           
+                for(let i=0; i<info.length; i++){
+                    let row = table.insertRow(0);
+                    let row2 = table.insertRow(1);
+                    let cell1 = row.insertCell(0);
+                    let cell2 = row.insertCell(1);
+                    let cell3 = row.insertCell(2);
+                    let cell4 = row2.insertCell(0)
+                    let cell5 = row2.insertCell(1)
+                    let cell6 = row2.insertCell(2)
+                    cell1.innerHTML = `Name: ${info[i].name} <br> Username: ${info[i].username}`;
+                    cell2.innerHTML = `Email: ${info[i].email}`;
+                    cell3.innerHTML = `Address: ${info[i].address.suite},${info[i].address.street},
+                                                ${info[i].address.city},${info[i].address.zipcode}
+                                                <br>${info[i].address.geo.lat}, ${info[i].address.geo.lng}`;
+
+                    cell4.innerHTML = ` Company: ${info[i].company.name}`;
+                    cell5.innerHTML =` Selling: ${info[i].company.bs}`;
+                    cell6.innerHTML = `CatchPhrase: ${info[i].company.catchPhrase}`;
+                }
+            })
+    </script>
+</body>
+</html>

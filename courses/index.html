@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+</head>
+<body>
+    <h1>Find Courses</h1>
+              <a href="/courses/details.html"> Try</a>
+  
+    <div>
+        <table id="coursetable">
+  
+        </table>
+    </div>
+    <script>
+        let tableEle = document.getElementById('coursetable');
+        let divEle = document.querySelector('div');
+        fetch('http://localhost:8081/api/courses')
+            .then(console.log('method was called'))
+            .then(response => response.json())
+            .then(data =>{
+                console.log(data);
+                for(let i=0; i<data.length; i++){
+                let row = tableEle.insertRow(-1);
+                let cell = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                cell.innerHTML = `ID: ${data[i].courseNum}`
+                cell2.innerHTML = `Title: ${data[i].courseName}  Department: ${data[i].dept} `
+                let anchor = document.createElement("a");
+                anchor.href = `http://localhost:8081/courses/details.html`;
+                anchor.text = "Show details";
+                cell2.appendChild(anchor)
+                }
+            })
+    </script>
+</body>
+</html>

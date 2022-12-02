@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details</title>
+</head>
+<body>
+<h1>hi</h1>
+    <script>
+        window.onload = () =>{
+            const urlParams = new URLSearchParams(location.search);
+            console.log(urlParams)
+            let id = -1;
+            if (urlParams.has("dataid") === true)
+            {
+            id = urlParams.get("dataid")
+            // Now that you know the course id, make an
+            // AJAX call to get that one course
+            // and in the callback, display it.
+            // Hint: you can create the URL you need for
+            // the ajax request by concatenating
+            // "http://localhost:8081pi/courses/" with the id!
+            }
+        }
+      
+    </script>
+</body>
+</html>

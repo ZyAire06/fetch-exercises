@@ -1,0 +1,3 @@
+# hidding files and folders from git hub
+node_modules
+test.html
